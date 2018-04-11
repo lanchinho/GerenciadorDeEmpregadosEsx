@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <h3>Empregado</h3>
+    <hr />
+    <form [formGroup]="empregadoForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Nome">Nome</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="nome">
+            </div>
+            <span class="text-danger" *ngIf="empregadoForm.hasError('required', 'nome') && formDir.submitted">
+                Por favor, informe o nome.
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="FaixaImposto">Faixa de Imposto Aplicada</label>
+            <div class="col-md-4">
+                <select class="form-control" data-val="true" formControlName="faixaImposto">
+                    <option value="">--  Selecione a Faixa de Imposto --</option>
+                    <option value="Isento">Isento</option>
+                    <option value="10%">10%</option>
+                    <option value="15%">15%</option>
+                    <option value="25%">25%</option>
+                </select>
+            </div>
+            <span class="text-danger" *ngIf="empregadoForm.hasError('required', 'faixaImposto') && formDir.submitted">
+                Por favor, selecione uma das faixas salariais
+            </span>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="SalarioBruto">Salário Bruto</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="salarioBruto">
+            </div>
+            <span class="text-danger" *ngIf="empregadoForm.hasError('required', 'salarioBruto') && formDir.submitted">
+                Por favor, informe o salário bruto
+            </span>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Salvar</button>
+            <button class="btn" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</body>
+</html>

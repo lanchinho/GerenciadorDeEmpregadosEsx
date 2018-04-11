@@ -1,0 +1,30 @@
+﻿<h1>Dados dos Empregados</h1>
+
+<p *ngIf="!empList"><em>Loading...</em></p>
+
+<p>
+    <a [routerLink]="['/cadastrar-empregado']">Cadastrar Novo Empregado</a>
+</p>
+
+<table class='table' *ngIf="empList">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Valor Bruto do Salário </th>
+            <th>Faixa de Imposto Aplicada</th>
+            <th>Valor Líquido do Salário </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empList">
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.nome }}</td>
+            <td>{{ emp.salarioBruto | currency:'BRL':'symbol'}}</td>
+            <td>{{ emp.faixaImposto}}</td>
+            <td>{{ emp.salarioLiquido | currency:'BRL':'symbol'}}</td>
+            <td>            
+        </tr>
+    </tbody>
+</table>

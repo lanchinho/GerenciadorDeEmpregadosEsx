@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EsXEmployeeManager.Models
 {
-    public class EmpregadoDataAccessLayer
+    public class EmpregadoDataAccessLayer : IEmpregadoDataAccessLayer
     {
         //TODO: POr minha connection string aqui...
         string connectionString = @"Data Source=PC-GUILHERME;Initial Catalog=DB_Empregado;Integrated Security=True";
@@ -115,6 +115,13 @@ namespace EsXEmployeeManager.Models
                 throw;
             }
         }
+    }
+
+    public interface IEmpregadoDataAccessLayer
+    {
+        IEnumerable<Empregado> GetEmpregados();
+        int AddEmpregado(Empregado empregado);
+        Empregado GetEmpregadoDetails(int id);
     }
 }
 

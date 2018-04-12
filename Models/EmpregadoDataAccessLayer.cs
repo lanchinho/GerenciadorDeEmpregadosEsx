@@ -36,7 +36,7 @@ namespace EsXEmployeeManager.Models
                         empregado.Nome = reader["Nome"].ToString();
                         empregado.SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]);
                         empregado.SalarioLiquido = Convert.ToDecimal(reader["SalarioLiquido"]);
-                        empregado.FaixaImposto = reader["FaixaImposto"].ToString();
+                        empregado.FaixaImposto = Convert.ToDecimal(reader["FaixaImposto"]);
 
                         empregadoList.Add(empregado);
                     }
@@ -65,7 +65,7 @@ namespace EsXEmployeeManager.Models
                     cmd.Parameters.AddWithValue("@Nome", empregado.Nome);
                     cmd.Parameters.AddWithValue("@SalarioBruto", empregado.SalarioBruto);
 
-                    decimal salarioLiquido = empregado.CalculaSalarioLiquido();
+                    decimal salarioLiquido = empregado.CalculaSalarioLiquido(empregado.SalarioBruto);
 
                     cmd.Parameters.AddWithValue("@SalarioLiquido", salarioLiquido);
                     cmd.Parameters.AddWithValue("@FaixaImposto", empregado.FaixaImposto);
@@ -104,7 +104,7 @@ namespace EsXEmployeeManager.Models
                         empregado.Nome = reader["Nome"].ToString();
                         empregado.SalarioBruto = Convert.ToDecimal(reader["SalarioBruto"]);
                         empregado.SalarioLiquido = Convert.ToDecimal(reader["SalarioLiquido"]);
-                        empregado.FaixaImposto = reader["FaixaImposto"].ToString();
+                        empregado.FaixaImposto = Convert.ToDecimal(reader["FaixaImposto"]);
                     }
                 }
 

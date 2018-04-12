@@ -18,7 +18,7 @@ export class AddEmpregadoComponent {
             id: 0,
             nome: ['', [Validators.required]],
             salarioBruto: ['', [Validators.required]],
-            faixaImposto: ['', [Validators.required]]
+            //faixaImposto: ['', [Validators.required]]
         })
     }
 
@@ -39,5 +39,5 @@ export class AddEmpregadoComponent {
     //TODO: Remover, talvez ?
     get name() { return this.empregadoForm.get('nome'); }
     get salarioBruto() { return this.empregadoForm.get('salarioBruto'); }
-    get faixaImposto() { return this.empregadoForm.get('faixaImposto'); }    
+    //get faixaImposto() { return this.empregadoForm.get('faixaImposto'); }    
 }

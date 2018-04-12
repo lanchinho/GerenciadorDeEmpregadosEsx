@@ -12,10 +12,9 @@ namespace EsXEmployeeManager.Models
         public string Nome { get; set; }
         public decimal SalarioBruto { get; set; }
         public decimal SalarioLiquido { get; set; }
-        public string FaixaImposto { get; set; }
+        public decimal FaixaImposto { get; set; }
 
         public Empregado() { }
-
 
         /*
          *  < 3k = isento
@@ -23,21 +22,30 @@ namespace EsXEmployeeManager.Models
          * 5k - 7k => 15 % imposto
          * 7k => 25%
          */
-        public decimal CalculaSalarioLiquido()
+        public decimal CalculaSalarioLiquido(decimal salario)
         {
-            if (SalarioBruto >= 3000 && SalarioBruto <= 5000)
+            FaixaImposto = 0;
+
+            if (salario >= 3000 && salario <= 5000)
             {
-                SalarioLiquido = SalarioBruto - (SalarioBruto * 0.1m);
+                FaixaImposto = 0.1m;
+                SalarioLiquido = salario - (salario * FaixaImposto);
+
                 return SalarioLiquido;
             }
-            else if (SalarioBruto > 5000 && SalarioBruto <= 7000)
+            else if (salario > 5000 && salario <= 7000)
             {
-                SalarioLiquido = SalarioBruto - (SalarioBruto * 0.15m);
+                FaixaImposto = 0.15m;
+                SalarioLiquido = salario - (salario * FaixaImposto);
+
                 return SalarioLiquido;
             }
-            else
+            else if (salario > 7000)
             {
-                SalarioLiquido = SalarioBruto - (SalarioBruto * 0.25m);
+                FaixaImposto = 0.25m;
+                SalarioLiquido = salario - (salario * FaixaImposto);
+
+                return SalarioLiquido;
             }
 
             return SalarioBruto;

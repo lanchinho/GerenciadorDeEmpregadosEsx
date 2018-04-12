@@ -3,5 +3,5 @@
     nome: string;
     salarioBruto: number;
     salarioLiquido: number;
-    faixaImposto: string;  
+    faixaImposto: number;  
 }

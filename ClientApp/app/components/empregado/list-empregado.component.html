@@ -1,13 +1,12 @@
 ﻿<h1>Dados dos Empregados</h1>
 
-<p *ngIf="!empList"><em>Loading...</em></p>
+<p *ngIf="!empList"><em>Carregando...</em></p>
 
 <p>
     <a [routerLink]="['/cadastrar-empregado']">Cadastrar Novo Empregado</a>
 </p>
 
 <table class='table' *ngIf="empList">
-
     <thead>
         <tr>
             <th>ID</th>
@@ -22,7 +21,7 @@
             <td>{{ emp.id }}</td>
             <td>{{ emp.nome }}</td>
             <td>{{ emp.salarioBruto | currency:'BRL':'symbol'}}</td>
-            <td>{{ emp.faixaImposto}}</td>
+            <td>{{ emp.faixaImposto | percent}}</td>
             <td>{{ emp.salarioLiquido | currency:'BRL':'symbol'}}</td>
             <td>            
         </tr>

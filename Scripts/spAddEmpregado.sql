@@ -1,9 +1,9 @@
 ﻿Create procedure spAddEmpregado         
 (        
-    @Nome VARCHAR(250),        
+    @Nome NVARCHAR(250),        
     @SalarioBruto DECIMAL(18,2),        
     @SalarioLiquido DECIMAL(18,2),        
-    @FaixaImposto VARCHAR(20)
+    @FaixaImposto DECIMAL(3,2)
 
 )        
 as         
